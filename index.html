@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paula Gil Atienza · Consultora Odoo</title>
+<meta name="description" content="Paula Gil Atienza. Consultora Odoo funcional y técnica. Ingeniera Industrial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf8f6; --surface:#ffffff; --surface-2:#f3efeb;
+  --text:#1f1a1d; --muted:#6b6267; --line:#e6dfda;
+  --accent:#6d3f60; --accent-soft:#f1e7ee; --accent-text:#ffffff;
+  --shadow:0 1px 2px rgba(30,20,25,.05),0 8px 24px rgba(30,20,25,.06);
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151214; --surface:#1e1a1d; --surface-2:#272226;
+    --text:#f2edf0; --muted:#a99fa5; --line:#342e32;
+    --accent:#d39cc4; --accent-soft:#3a2834; --accent-text:#1a1218;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151214; --surface:#1e1a1d; --surface-2:#272226;
+  --text:#f2edf0; --muted:#a99fa5; --line:#342e32;
+  --accent:#d39cc4; --accent-soft:#3a2834; --accent-text:#1a1218;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+h1,h2,h3{margin:0;line-height:1.2}
+h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:1.75rem;margin-bottom:1.25rem}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* language toggle */
+html[data-lang="es"] [lang="en"]:not(html){display:none!important}
+html[data-lang="en"] [lang="es"]:not(html){display:none!important}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.brand{font-weight:600;text-decoration:none;color:var(--text);white-space:nowrap}
+.nav{display:flex;gap:18px;margin-left:auto;font-size:.92rem}
+.nav a{color:var(--muted);text-decoration:none}
+.nav a:hover{color:var(--text)}
+.tools{display:flex;gap:6px}
+.btn-icon{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;height:34px;min-width:34px;padding:0 10px;font:600 .8rem Inter,sans-serif;cursor:pointer}
+.btn-icon:hover{border-color:var(--accent)}
+
+/* hero */
+.hero{padding:72px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+.mono{width:112px;height:112px;border-radius:50%;background:var(--accent);color:var(--accent-text);display:grid;place-items:center;font:600 2.4rem Fraunces,serif}
+.photo{object-fit:cover;object-position:42% 30%;width:140px;height:140px;border:3px solid var(--surface);box-shadow:var(--shadow)}
+.hero h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3rem)}
+.headline{font-size:1.15rem;color:var(--muted);margin:.5rem 0 1.25rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.85rem;color:var(--text)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.5rem}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 16px;font-weight:600;font-size:.92rem;text-decoration:none;border:1px solid var(--accent);cursor:pointer;font-family:inherit}
+.btn.primary{background:var(--accent);color:var(--accent-text)}
+.btn.ghost{background:transparent;color:var(--accent)}
+
+section{padding:48px 0;border-top:1px solid var(--line)}
+.lead p{font-size:1.05rem;max-width:68ch;margin:0 0 1rem}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.card h3{font-size:1rem;margin-bottom:.4rem}
+.card p{margin:0;color:var(--muted);font-size:.93rem}
+
+/* sectors */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:8px 14px;font:500 .9rem Inter,sans-serif;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.panel[hidden]{display:none}
+.panel h3{font-size:1.15rem;margin-bottom:.5rem}
+.panel p{margin:0 0 1rem;max-width:70ch}
+.label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.5rem;font-weight:600}
+.mods{display:flex;flex-wrap:wrap;gap:6px}
+.mod{background:var(--accent-soft);color:var(--text);border-radius:6px;padding:3px 10px;font-size:.85rem}
+
+/* timeline */
+.tl{position:relative;padding-left:28px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.job{position:relative;margin-bottom:28px}
+.job::before{content:"";position:absolute;left:-28px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.job h3{font-size:1.1rem}
+.meta{color:var(--muted);font-size:.9rem;margin:.2rem 0 .7rem}
+.job ul{margin:0;padding-left:1.1rem}
+.job li{margin-bottom:.3rem}
+.job p{margin:0 0 .6rem;max-width:72ch}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+
+footer{border-top:1px solid var(--line);padding:40px 0 60px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
+
+@media (max-width:720px){
+  .nav{display:none}
+  .hero{padding:44px 0 36px}
+  .hero .wrap{grid-template-columns:1fr;gap:20px}
+  .mono{width:84px;height:84px;font-size:1.8rem}
+  .two{grid-template-columns:1fr}
+  .wrap{padding:0 16px}
+}
+
+/* print = CV descargable */
+@media print{
+  :root{--bg:#fff;--surface:#fff;--surface-2:#fff;--text:#111;--muted:#555;--line:#ddd;--accent:#6d3f60;--accent-soft:#f3eaf0;--shadow:none}
+  .bar,.cta,.tabs,.no-print{display:none!important}
+  body{font-size:11pt;line-height:1.45}
+  section{padding:14px 0;break-inside:avoid-page}
+  .hero{padding:0 0 10px}
+  .mono{width:64px;height:64px;font-size:1.3rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .panel[hidden]{display:block!important}
+  .panel{box-shadow:none;padding:10px 0;border:0;border-bottom:1px solid var(--line);border-radius:0}
+  .card{box-shadow:none;padding:10px}
+  h2{font-size:15pt;margin-bottom:8px}
+  .mod,.chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Paula Gil Atienza</a>
+    <nav class="nav">
+      <a href="#sobre-mi"><span lang="es">Sobre mí</span><span lang="en">About</span></a>
+      <a href="#sectores"><span lang="es">Sectores</span><span lang="en">Industries</span></a>
+      <a href="#experiencia"><span lang="es">Experiencia</span><span lang="en">Experience</span></a>
+      <a href="#formacion"><span lang="es">Formación</span><span lang="en">Education</span></a>
+    </nav>
+    <div class="tools">
+      <button class="btn-icon" id="langBtn" aria-label="Change language">EN</button>
+      <button class="btn-icon" id="themeBtn" aria-label="Cambiar tema">◐</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <img class="mono photo" src="foto.jpg" alt="Paula Gil Atienza">
+      <div>
+        <h1>Paula Gil Atienza</h1>
+        <p class="headline">
+          <span lang="es">Consultora Odoo funcional y técnica · Ingeniera Industrial · Especializada en IA aplicada a la empresa</span>
+          <span lang="en">Functional &amp; Technical Odoo Consultant · Industrial Engineer · Focused on AI for business</span>
+        </p>
+        <div class="chips">
+          <span class="chip">Murcia, <span lang="es">España</span><span lang="en">Spain</span></span>
+          <span class="chip">Odoo Certified Professional</span>
+          <span class="chip"><span lang="es">Inglés B2</span><span lang="en">English B2</span></span>
+          <span class="chip"><span lang="es">Presencial · Híbrido · Remoto</span><span lang="en">On-site · Hybrid · Remote</span></span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://www.linkedin.com/in/paula-gil-atienza" target="_blank" rel="noopener">LinkedIn</a>
+          <button class="btn ghost" onclick="window.print()"><span lang="es">Descargar CV (PDF)</span><span lang="en">Download CV (PDF)</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="sobre-mi">
+    <div class="wrap lead">
+      <h2><span lang="es">Sobre mí</span><span lang="en">About me</span></h2>
+      <div lang="es">
+        <p>Ayudo a empresas a adaptar Odoo a su forma real de trabajar. Me encargo tanto de la parte funcional como de la técnica: estudio cómo funciona cada empresa, propongo mejoras en sus procesos y las llevo al sistema con configuración, desarrollos a medida en Python, integraciones y conectores, migraciones, informes y formación a usuarios.</p>
+        <p>Trabajar con negocios tan distintos es lo que más me ha hecho crecer: cada proyecto parte de cero y me obliga a entender primero el negocio para luego encontrar la mejor solución dentro de Odoo.</p>
+        <p>Me he especializado en inteligencia artificial aplicada a la empresa. La uso a diario en mi trabajo y he participado en la integración de Odoo con asistentes de IA mediante MCP.</p>
+      </div>
+      <div lang="en">
+        <p>I help companies adapt Odoo to the way they actually work. I cover both the functional and the technical side: I study how each business runs, propose process improvements and bring them into the system through configuration, custom Python development, integrations and connectors, migrations, reports and user training.</p>
+        <p>Working with very different businesses is what has helped me grow the most: every project starts from scratch and makes me understand the business first, then find the best solution within Odoo.</p>
+        <p>I specialise in AI applied to business. I use it every day in my work and have taken part in integrating Odoo with AI assistants through MCP.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <h2><span lang="es">Qué hago</span><span lang="en">What I do</span></h2>
+      <div class="grid">
+        <div class="card"><h3><span lang="es">Análisis de procesos</span><span lang="en">Process analysis</span></h3><p><span lang="es">Estudio cómo trabaja la empresa y propongo mejoras antes de llevarlas al sistema.</span><span lang="en">I study how the company works and propose improvements before taking them into the system.</span></p></div>
+        <div class="card"><h3><span lang="es">Implantación funcional</span><span lang="en">Functional implementation</span></h3><p><span lang="es">Configuración de Odoo en fabricación, compras, ventas, inventario, TPV, e-commerce y contabilidad.</span><span lang="en">Odoo setup across manufacturing, purchasing, sales, inventory, POS, e-commerce and accounting.</span></p></div>
+        <div class="card"><h3><span lang="es">Desarrollo a medida</span><span lang="en">Custom development</span></h3><p><span lang="es">Módulos en Python: lógica de negocio, vistas, informes y reportes.</span><span lang="en">Python modules: business logic, views, reports.</span></p></div>
+        <div class="card"><h3><span lang="es">Integraciones y conectores</span><span lang="en">Integrations &amp; connectors</span></h3><p><span lang="es">Conexión de Odoo con aplicaciones externas, como tiendas Shopify.</span><span lang="en">Connecting Odoo with external apps, such as Shopify stores.</span></p></div>
+        <div class="card"><h3><span lang="es">Migraciones y actualizaciones</span><span lang="en">Migrations &amp; upgrades</span></h3><p><span lang="es">Cambios de versión y actualizaciones de clientes en producción.</span><span lang="en">Version upgrades and updates for clients in production.</span></p></div>
+        <div class="card"><h3><span lang="es">Formación y soporte</span><span lang="en">Training &amp; support</span></h3><p><span lang="es">Formación a usuarios y resolución de incidencias en el día a día.</span><span lang="en">User training and day-to-day issue resolution.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sectores">
+    <div class="wrap">
+      <h2><span lang="es">Sectores en los que he trabajado</span><span lang="en">Industries I've worked with</span></h2>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="s1"><span lang="es">Ingeniería y obra</span><span lang="en">Construction engineering</span></button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="s2"><span lang="es">Distribución de cosmética</span><span lang="en">Cosmetics distribution</span></button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="s3"><span lang="es">Panadería con obrador</span><span lang="en">Bakery with production</span></button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="s4"><span lang="es">Iluminación</span><span lang="en">Lighting</span></button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="s5"><span lang="es">Formación</span><span lang="en">Training academy</span></button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="s6"><span lang="es">Tienda online</span><span lang="en">Online store</span></button>
+      </div>
+
+      <div class="panel" id="s1" role="tabpanel">
+        <h3><span lang="es">Ingenierías de construcción y obra</span><span lang="en">Construction engineering firms</span></h3>
+        <p><span lang="es">El reto: controlar cada obra como un proyecto, con su seguimiento y sus costes.</span><span lang="en">The challenge: managing every site as a project, with its own tracking and costs.</span></p>
+        <div class="label"><span lang="es">Áreas de Odoo</span><span lang="en">Odoo areas</span></div>
+        <div class="mods"><span class="mod">Proyectos</span><span class="mod">Ventas</span><span class="mod">Compras</span><span class="mod">Contabilidad</span></div>
+      </div>
+      <div class="panel" id="s2" role="tabpanel" hidden>
+        <h3><span lang="es">Distribuidora de cosmética</span><span lang="en">Cosmetics distributor</span></h3>
+        <p><span lang="es">El reto: que la red comercial tenga todo lo que necesita mientras visita tiendas cada día.</span><span lang="en">The challenge: giving the sales team everything they need while visiting shops every day.</span></p>
+        <div class="label"><span lang="es">Áreas de Odoo</span><span lang="en">Odoo areas</span></div>
+        <div class="mods"><span class="mod">CRM</span><span class="mod">Ventas</span><span class="mod">Inventario</span><span class="mod">Contabilidad</span></div>
+      </div>
+      <div class="panel" id="s3" role="tabpanel" hidden>
+        <h3><span lang="es">Panadería con obrador y tiendas propias</span><span lang="en">Bakery with its own production and shops</span></h3>
+        <p><span lang="es">El reto: que la fabricación, el inventario y la venta en tienda funcionen como un único sistema.</span><span lang="en">The challenge: making production, inventory and in-store sales work as a single system.</span></p>
+        <div class="label"><span lang="es">Áreas de Odoo</span><span lang="en">Odoo areas</span></div>
+        <div class="mods"><span class="mod">Fabricación</span><span class="mod">Compras</span><span class="mod">Ventas</span><span class="mod">Inventario</span><span class="mod">TPV</span><span class="mod">Contabilidad</span></div>
+      </div>
+      <div class="panel" id="s4" role="tabpanel" hidden>
+        <h3><span lang="es">Venta y distribución de iluminación</span><span lang="en">Lighting sales and distribution</span></h3>
+        <p><span lang="es">El reto: gestionar la venta a distribuidores y grandes superficies desde un mismo sistema.</span><span lang="en">The challenge: managing sales to distributors and large retailers from one system.</span></p>
+        <div class="label"><span lang="es">Áreas de Odoo</span><span lang="en">Odoo areas</span></div>
+        <div class="mods"><span class="mod">Ventas</span><span class="mod">Compras</span><span class="mod">Inventario</span><span class="mod">Contabilidad</span></div>
+      </div>
+      <div class="panel" id="s5" role="tabpanel" hidden>
+        <h3><span lang="es">Academia de formación</span><span lang="en">Training academy</span></h3>
+        <p><span lang="es">El reto: adaptar Odoo a un negocio de servicios, lejos del uso industrial habitual.</span><span lang="en">The challenge: adapting Odoo to a service business, far from its usual industrial use.</span></p>
+        <div class="label"><span lang="es">Áreas de Odoo</span><span lang="en">Odoo areas</span></div>
+        <div class="mods"><span class="mod">Ventas</span><span class="mod">Contabilidad</span></div>
+      </div>
+      <div class="panel" id="s6" role="tabpanel" hidden>
+        <h3><span lang="es">Tienda de ropa online</span><span lang="en">Online clothing store</span></h3>
+        <p><span lang="es">El reto: conectar la tienda Shopify con Odoo para que pedidos, stock y facturación vayan sincronizados.</span><span lang="en">The challenge: connecting the Shopify store with Odoo so orders, stock and invoicing stay in sync.</span></p>
+        <div class="label"><span lang="es">Áreas de Odoo</span><span lang="en">Odoo areas</span></div>
+        <div class="mods"><span class="mod">Conector Shopify</span><span class="mod">Ventas</span><span class="mod">Inventario</span><span class="mod">Contabilidad</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="wrap">
+      <h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2>
+      <div class="tl">
+        <div class="job">
+          <h3><span lang="es">Consultora de Soluciones ERP y Proyectos Evolutivos</span><span lang="en">ERP Solutions &amp; Evolutive Projects Consultant</span></h3>
+          <div class="meta">Mirandir <span lang="es">(antes Onmi Engineering) · Oct. 2024 – actualidad · Región de Murcia · Híbrido</span><span lang="en">(formerly Onmi Engineering) · Oct 2024 – present · Murcia, Spain · Hybrid</span></div>
+          <div lang="es">
+            <p>Cartera propia de clientes de sectores muy diversos, desde el análisis de sus procesos hasta el soporte en explotación.</p>
+            <ul>
+              <li>Análisis y rediseño de procesos con cada área del cliente antes de llevarlos a Odoo.</li>
+              <li>Implantación de módulos según el proyecto: fabricación, compras, ventas, inventario, TPV, comercio electrónico y contabilidad.</li>
+              <li>Desarrollo de módulos a medida en Python: lógica de negocio, vistas, informes y reportes.</li>
+              <li>Integraciones y conectores con aplicaciones externas, como Shopify.</li>
+              <li>Migraciones de versión y actualizaciones de clientes en producción.</li>
+              <li>Formación a usuarios y resolución de incidencias.</li>
+              <li>Uso diario de IA en el trabajo y participación en la integración de Odoo con asistentes de IA mediante MCP.</li>
+            </ul>
+          </div>
+          <div lang="en">
+            <p>Own portfolio of clients across very different industries, from process analysis to live support.</p>
+            <ul>
+              <li>Process analysis and redesign with each client department before taking it into Odoo.</li>
+              <li>Module implementation per project: manufacturing, purchasing, sales, inventory, POS, e-commerce and accounting.</li>
+              <li>Custom Python module development: business logic, views and reports.</li>
+              <li>Integrations and connectors with external apps such as Shopify.</li>
+              <li>Version migrations and upgrades for clients in production.</li>
+              <li>User training and issue resolution.</li>
+              <li>Daily use of AI at work and involvement in integrating Odoo with AI assistants via MCP.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <h3><span lang="es">Prácticas de Ingeniería Industrial</span><span lang="en">Industrial Engineering Intern</span></h3>
+          <div class="meta">Romar Global Care / Quimi Romar · <span lang="es">Jun. – sept. 2024 · Sagunto (Valencia)</span><span lang="en">Jun – Sep 2024 · Sagunto, Valencia</span></div>
+          <div lang="es">
+            <p>Apoyo a la dirección de ingeniería en el traslado de la producción a una nueva nave.</p>
+            <ul>
+              <li>Organización y traslado de las líneas de producción a las nuevas instalaciones.</li>
+              <li>Revisión de certificaciones de obra y cumplimiento de normativa industrial.</li>
+              <li>Análisis de flujos de material y personal para mejorar la distribución en planta.</li>
+              <li>Seguimiento de partes de trabajo y costes.</li>
+            </ul>
+          </div>
+          <div lang="en">
+            <p>Supported the engineering lead in moving production to a new plant.</p>
+            <ul>
+              <li>Planning and relocation of production lines to the new facility.</li>
+              <li>Review of building certifications and industrial compliance.</li>
+              <li>Material and people flow analysis to improve plant layout.</li>
+              <li>Tracking of work orders and costs.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formacion">
+    <div class="wrap">
+      <h2><span lang="es">Formación y certificaciones</span><span lang="en">Education &amp; certifications</span></h2>
+      <div class="two">
+        <div class="card">
+          <h3><span lang="es">Ingeniería de las Tecnologías Industriales</span><span lang="en">BSc Industrial Technologies Engineering</span></h3>
+          <p><span lang="es">Universidad Politécnica de Cartagena · 2018 – 2024</span><span lang="en">Technical University of Cartagena · 2018 – 2024</span></p>
+        </div>
+        <div class="card">
+          <h3>Odoo 18 Certified Professional</h3>
+          <p>Odoo · <span lang="es">Dic. 2025</span><span lang="en">Dec 2025</span></p>
+        </div>
+        <div class="card">
+          <h3>B2 First Certificate in English (FCE)</h3>
+          <p>Cambridge English · <span lang="es">Jun. 2018</span><span lang="en">Jun 2018</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="aptitudes">
+    <div class="wrap">
+      <h2><span lang="es">Aptitudes</span><span lang="en">Skills</span></h2>
+      <div class="skills">
+        <span class="chip">Odoo</span>
+        <span class="chip">ERP</span>
+        <span class="chip"><span lang="es">Análisis de procesos</span><span lang="en">Business process analysis</span></span>
+        <span class="chip">Python</span>
+        <span class="chip"><span lang="es">Integración de sistemas</span><span lang="en">Systems integration</span></span>
+        <span class="chip">Shopify</span>
+        <span class="chip"><span lang="es">TPV</span><span lang="en">Point of Sale</span></span>
+        <span class="chip"><span lang="es">Migración de datos</span><span lang="en">Data migration</span></span>
+        <span class="chip"><span lang="es">Gestión de la producción</span><span lang="en">Production management</span></span>
+        <span class="chip"><span lang="es">IA generativa</span><span lang="en">Generative AI</span></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Paula Gil Atienza · Murcia</span>
+    <a href="https://www.linkedin.com/in/paula-gil-atienza" target="_blank" rel="noopener">linkedin.com/in/paula-gil-atienza</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const root=document.documentElement;
+  const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+  const set=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+
+  const MODS={'Proyectos':'Projects','Ventas':'Sales','Compras':'Purchasing','Contabilidad':'Accounting','Inventario':'Inventory','Fabricación':'Manufacturing','TPV':'Point of Sale','CRM':'CRM','Conector Shopify':'Shopify connector'};
+  document.querySelectorAll('.mod').forEach(m=>m.dataset.es=m.textContent);
+  const langBtn=document.getElementById('langBtn');
+  function setLang(l){root.dataset.lang=l;root.lang=l;langBtn.textContent=l==='es'?'EN':'ES';set('lang',l);
+    document.querySelectorAll('.mod').forEach(m=>m.textContent=l==='en'?(MODS[m.dataset.es]||m.dataset.es):m.dataset.es)}
+  setLang(get('lang')||((navigator.language||'es').startsWith('es')?'es':'en'));
+  langBtn.onclick=()=>setLang(root.dataset.lang==='es'?'en':'es');
+
+  const themeBtn=document.getElementById('themeBtn');
+  const t=get('theme'); if(t) root.dataset.theme=t;
+  themeBtn.onclick=()=>{
+    const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark'; set('theme',root.dataset.theme);
+  };
+
+  const tabs=[...document.querySelectorAll('.tab')];
+  tabs.forEach(tab=>tab.addEventListener('click',()=>{
+    tabs.forEach(t=>{t.setAttribute('aria-selected','false');document.getElementById(t.getAttribute('aria-controls')).hidden=true});
+    tab.setAttribute('aria-selected','true');
+    document.getElementById(tab.getAttribute('aria-controls')).hidden=false;
+  }));
+})();
+</script>
+</body>
+</html>

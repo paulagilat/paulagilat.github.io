@@ -10,30 +10,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#faf8f6; --surface:#ffffff; --surface-2:#f3efeb;
-  --text:#1f1a1d; --muted:#6b6267; --line:#e6dfda;
-  --accent:#6d3f60; --accent-soft:#f1e7ee; --accent-text:#ffffff;
-  --shadow:0 1px 2px rgba(30,20,25,.05),0 8px 24px rgba(30,20,25,.06);
+  --bg:#f7f8fc; --surface:#ffffff; --surface-2:#eef2fb;
+  --text:#1a1d29; --muted:#5f6577; --line:#e0e5f2;
+  --accent:#82a3fc; --accent-ink:#3a5fcf; --accent-soft:#e6edfe; --accent-text:#0f1733;
+  --shadow:0 1px 2px rgba(30,25,60,.05),0 8px 24px rgba(30,25,60,.06);
   --radius:14px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#151214; --surface:#1e1a1d; --surface-2:#272226;
-    --text:#f2edf0; --muted:#a99fa5; --line:#342e32;
-    --accent:#d39cc4; --accent-soft:#3a2834; --accent-text:#1a1218;
+    --bg:#11131a; --surface:#1a1d27; --surface-2:#232736;
+    --text:#eef0f7; --muted:#a3a8bb; --line:#2f3445;
+    --accent:#82a3fc; --accent-ink:#a4bcff; --accent-soft:#1f2a4a; --accent-text:#0f1733;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#151214; --surface:#1e1a1d; --surface-2:#272226;
-  --text:#f2edf0; --muted:#a99fa5; --line:#342e32;
-  --accent:#d39cc4; --accent-soft:#3a2834; --accent-text:#1a1218;
+  --bg:#11131a; --surface:#1a1d27; --surface-2:#232736;
+  --text:#eef0f7; --muted:#a3a8bb; --line:#2f3445;
+  --accent:#82a3fc; --accent-ink:#a4bcff; --accent-soft:#1f2a4a; --accent-text:#0f1733;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--accent)}
+a{color:var(--accent-ink)}
 h1,h2,h3{margin:0;line-height:1.2}
 h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:1.75rem;margin-bottom:1.25rem}
 .wrap{max-width:960px;margin:0 auto;padding:0 20px}
@@ -65,7 +65,7 @@ html[data-lang="en"] [lang="es"]:not(html){display:none!important}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.5rem}
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 16px;font-weight:600;font-size:.92rem;text-decoration:none;border:1px solid var(--accent);cursor:pointer;font-family:inherit}
 .btn.primary{background:var(--accent);color:var(--accent-text)}
-.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost{background:transparent;color:var(--accent-ink)}
 
 section{padding:48px 0;border-top:1px solid var(--line)}
 .lead p{font-size:1.05rem;max-width:68ch;margin:0 0 1rem}
@@ -114,19 +114,39 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
   .wrap{padding:0 16px}
 }
 
-/* print = CV descargable */
+/* ---------- CV para PDF (solo impresión) ---------- */
+.cv{display:none}
+@page{size:A4;margin:0}
 @media print{
-  :root{--bg:#fff;--surface:#fff;--surface-2:#fff;--text:#111;--muted:#555;--line:#ddd;--accent:#6d3f60;--accent-soft:#f3eaf0;--shadow:none}
-  .bar,.cta,.tabs,.no-print{display:none!important}
-  body{font-size:11pt;line-height:1.45}
-  section{padding:14px 0;break-inside:avoid-page}
-  .hero{padding:0 0 10px}
-  .mono{width:64px;height:64px;font-size:1.3rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .panel[hidden]{display:block!important}
-  .panel{box-shadow:none;padding:10px 0;border:0;border-bottom:1px solid var(--line);border-radius:0}
-  .card{box-shadow:none;padding:10px}
-  h2{font-size:15pt;margin-bottom:8px}
-  .mod,.chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{background:#fff!important;margin:0}
+  body>*:not(.cv){display:none!important}
+  .cv{display:grid;grid-template-columns:66mm 1fr;width:210mm;height:296mm;overflow:hidden;
+      font:8.6pt/1.42 Inter,system-ui,sans-serif;color:#1a1d29;
+      -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cv-side{background:#eaf0fe;padding:14mm 7mm 12mm 9mm;display:flex;flex-direction:column;gap:6mm}
+  .cv-main{padding:14mm 11mm 12mm 9mm;display:flex;flex-direction:column;gap:5mm}
+  .cv-photo{width:36mm;height:36mm;border-radius:50%;object-fit:cover;object-position:42% 30%;border:2.5px solid #fff;align-self:center}
+  .cv h1{font:600 21pt/1.1 Fraunces,Georgia,serif;color:#1a1d29;margin:0}
+  .cv-role{color:#3a5fcf;font-weight:600;font-size:9.6pt;margin-top:2mm}
+  .cv h4{font:700 7.4pt/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#3a5fcf;margin:0 0 2.4mm;padding-bottom:1.6mm;border-bottom:1px solid #c8d6fc}
+  .cv-main h4{border-bottom-color:#e0e5f2}
+  .cv p{margin:0}
+  .cv-list{list-style:none;margin:0;padding:0}
+  .cv-list li{margin-bottom:1.4mm}
+  .cv-list b{display:block;font-weight:600}
+  .cv-list span.s{color:#5f6577}
+  .cv-tags{display:flex;flex-wrap:wrap;gap:1.4mm}
+  .cv-tags>span{background:#fff;border:1px solid #c8d6fc;border-radius:3mm;padding:.5mm 2.2mm;font-size:7.8pt}
+  .cv-job{margin-bottom:3.5mm}
+  .cv-job-head{display:flex;justify-content:space-between;gap:4mm;align-items:baseline}
+  .cv-job h5{font-size:9.6pt;font-weight:600;margin:0}
+  .cv-date{color:#5f6577;font-size:7.8pt;white-space:nowrap}
+  .cv-org{color:#3a5fcf;font-weight:500;margin:.4mm 0 1.4mm}
+  .cv ul.b{margin:0;padding-left:3.6mm}
+  .cv ul.b li{margin-bottom:.7mm}
+  .cv-sectors{display:grid;grid-template-columns:1fr 1fr;gap:2mm 5mm}
+  .cv-sectors b{display:block;font-weight:600}
+  .cv-sectors span{color:#5f6577}
 }
 </style>
 </head>
@@ -350,6 +370,118 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
   </section>
 </main>
 
+<!-- CV para PDF: solo se ve al imprimir / descargar -->
+<div class="cv" aria-hidden="true">
+  <aside class="cv-side">
+    <img class="cv-photo" src="foto.jpg" alt="">
+    <div>
+      <h4><span lang="es">Contacto</span><span lang="en">Contact</span></h4>
+      <ul class="cv-list">
+        <li>Murcia, <span lang="es">España</span><span lang="en">Spain</span></li>
+        <li>linkedin.com/in/paula-gil-atienza</li>
+        <li>paulagilat.github.io</li>
+        <li><span lang="es">Presencial · Híbrido · Remoto</span><span lang="en">On-site · Hybrid · Remote</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4><span lang="es">Formación</span><span lang="en">Education</span></h4>
+      <ul class="cv-list">
+        <li><b><span lang="es">Ingeniería de las Tecnologías Industriales</span><span lang="en">BSc Industrial Technologies Engineering</span></b><span class="s"><span lang="es">Universidad Politécnica de Cartagena</span><span lang="en">Technical University of Cartagena</span> · 2018–2024</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4><span lang="es">Certificaciones</span><span lang="en">Certifications</span></h4>
+      <ul class="cv-list">
+        <li><b>Odoo 18 Certified Professional</b><span class="s">Odoo · <span lang="es">2025</span><span lang="en">2025</span></span></li>
+        <li><b>B2 First Certificate in English</b><span class="s">Cambridge English · 2018</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4><span lang="es">Idiomas</span><span lang="en">Languages</span></h4>
+      <ul class="cv-list">
+        <li><span lang="es">Español · nativo</span><span lang="en">Spanish · native</span></li>
+        <li><span lang="es">Inglés · B2</span><span lang="en">English · B2</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4><span lang="es">Aptitudes</span><span lang="en">Skills</span></h4>
+      <div class="cv-tags">
+        <span>Odoo</span><span>ERP</span><span>Python</span>
+        <span><span lang="es">Análisis de procesos</span><span lang="en">Process analysis</span></span>
+        <span><span lang="es">Integración de sistemas</span><span lang="en">Systems integration</span></span>
+        <span>Shopify</span>
+        <span><span lang="es">TPV</span><span lang="en">Point of Sale</span></span>
+        <span><span lang="es">Migración de datos</span><span lang="en">Data migration</span></span>
+        <span><span lang="es">Gestión de la producción</span><span lang="en">Production management</span></span>
+        <span><span lang="es">IA generativa</span><span lang="en">Generative AI</span></span>
+      </div>
+    </div>
+  </aside>
+
+  <div class="cv-main">
+    <header>
+      <h1>Paula Gil Atienza</h1>
+      <div class="cv-role"><span lang="es">Consultora Odoo funcional y técnica · Ingeniera Industrial</span><span lang="en">Functional &amp; Technical Odoo Consultant · Industrial Engineer</span></div>
+    </header>
+
+    <div>
+      <h4><span lang="es">Perfil</span><span lang="en">Profile</span></h4>
+      <p lang="es">Ayudo a empresas a adaptar Odoo a su forma real de trabajar. Me encargo de la parte funcional y de la técnica: estudio cómo funciona cada empresa, propongo mejoras en sus procesos y las llevo al sistema con configuración, desarrollos a medida en Python, integraciones, migraciones, informes y formación a usuarios. Especializada en inteligencia artificial aplicada a la empresa.</p>
+      <p lang="en">I help companies adapt Odoo to the way they actually work. I cover both the functional and technical side: I study how each business runs, propose process improvements and bring them into the system through configuration, custom Python development, integrations, migrations, reports and user training. Focused on AI applied to business.</p>
+    </div>
+
+    <div>
+      <h4><span lang="es">Experiencia</span><span lang="en">Experience</span></h4>
+      <div class="cv-job">
+        <div class="cv-job-head"><h5><span lang="es">Consultora de Soluciones ERP y Proyectos Evolutivos</span><span lang="en">ERP Solutions &amp; Evolutive Projects Consultant</span></h5><span class="cv-date"><span lang="es">Oct. 2024 – actualidad</span><span lang="en">Oct 2024 – present</span></span></div>
+        <div class="cv-org">Mirandir <span lang="es">(antes Onmi Engineering) · Murcia</span><span lang="en">(formerly Onmi Engineering) · Murcia</span></div>
+        <ul class="b" lang="es">
+          <li>Cartera propia de clientes de sectores muy diversos, desde el análisis de procesos hasta el soporte en explotación.</li>
+          <li>Implantación de fabricación, compras, ventas, inventario, TPV, comercio electrónico y contabilidad.</li>
+          <li>Desarrollo de módulos a medida en Python: lógica de negocio, vistas, informes y reportes.</li>
+          <li>Integraciones y conectores con aplicaciones externas, como Shopify.</li>
+          <li>Migraciones de versión, formación a usuarios y resolución de incidencias.</li>
+          <li>Uso diario de IA y participación en la integración de Odoo con asistentes de IA mediante MCP.</li>
+        </ul>
+        <ul class="b" lang="en">
+          <li>Own portfolio of clients across very different industries, from process analysis to live support.</li>
+          <li>Implementation of manufacturing, purchasing, sales, inventory, POS, e-commerce and accounting.</li>
+          <li>Custom Python module development: business logic, views and reports.</li>
+          <li>Integrations and connectors with external apps such as Shopify.</li>
+          <li>Version migrations, user training and issue resolution.</li>
+          <li>Daily use of AI and involvement in integrating Odoo with AI assistants via MCP.</li>
+        </ul>
+      </div>
+      <div class="cv-job">
+        <div class="cv-job-head"><h5><span lang="es">Prácticas de Ingeniería Industrial</span><span lang="en">Industrial Engineering Intern</span></h5><span class="cv-date"><span lang="es">Jun. – sept. 2024</span><span lang="en">Jun – Sep 2024</span></span></div>
+        <div class="cv-org">Romar Global Care / Quimi Romar · Sagunto</div>
+        <ul class="b" lang="es">
+          <li>Apoyo a la dirección de ingeniería en el traslado de la producción a una nueva nave.</li>
+          <li>Revisión de certificaciones de obra y normativa industrial; análisis de flujos para mejorar la distribución en planta.</li>
+          <li>Seguimiento de partes de trabajo y costes.</li>
+        </ul>
+        <ul class="b" lang="en">
+          <li>Supported the engineering lead in moving production to a new plant.</li>
+          <li>Review of building certifications and industrial compliance; flow analysis to improve plant layout.</li>
+          <li>Tracking of work orders and costs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <h4><span lang="es">Sectores en los que he trabajado</span><span lang="en">Industries</span></h4>
+      <div class="cv-sectors">
+        <div><b><span lang="es">Ingeniería y obra</span><span lang="en">Construction engineering</span></b><span lang="es">Control de cada obra como proyecto.</span><span lang="en">Managing each site as a project.</span></div>
+        <div><b><span lang="es">Distribución de cosmética</span><span lang="en">Cosmetics distribution</span></b><span lang="es">Soporte a una red comercial en ruta.</span><span lang="en">Supporting a field sales team.</span></div>
+        <div><b><span lang="es">Panadería con obrador</span><span lang="en">Bakery with production</span></b><span lang="es">Fabricación, inventario y TPV en un solo sistema.</span><span lang="en">Production, inventory and POS in one system.</span></div>
+        <div><b><span lang="es">Iluminación</span><span lang="en">Lighting</span></b><span lang="es">Venta a distribuidores y grandes superficies.</span><span lang="en">Sales to distributors and large retailers.</span></div>
+        <div><b><span lang="es">Academia de formación</span><span lang="en">Training academy</span></b><span lang="es">Odoo aplicado a un negocio de servicios.</span><span lang="en">Odoo for a service business.</span></div>
+        <div><b><span lang="es">Tienda de ropa online</span><span lang="en">Online clothing store</span></b><span lang="es">Shopify sincronizado con Odoo.</span><span lang="en">Shopify synced with Odoo.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="wrap">
     <span>Paula Gil Atienza · Murcia</span>
@@ -368,7 +500,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
   const langBtn=document.getElementById('langBtn');
   function setLang(l){root.dataset.lang=l;root.lang=l;langBtn.textContent=l==='es'?'EN':'ES';set('lang',l);
     document.querySelectorAll('.mod').forEach(m=>m.textContent=l==='en'?(MODS[m.dataset.es]||m.dataset.es):m.dataset.es)}
-  setLang(get('lang')||((navigator.language||'es').startsWith('es')?'es':'en'));
+  setLang(new URLSearchParams(location.search).get('lang')||get('lang')||((navigator.language||'es').startsWith('es')?'es':'en'));
   langBtn.onclick=()=>setLang(root.dataset.lang==='es'?'en':'es');
 
   const themeBtn=document.getElementById('themeBtn');
